@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffe8f0"><title>For ALICEDUD ♡</title>
+<style>
+:root{--p:#e978a0;--pd:#c95782;--ink:#684b59;--muted:#987b87;--line:#f4cddd}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink);background:linear-gradient(145deg,#fff7f3,#ffe7ef 55%,#fff5df);overflow-x:hidden}
+main{width:min(760px,calc(100% - 28px));margin:25px auto 55px;position:relative;z-index:1}
+.card{background:#ffffffed;border:1px solid white;border-radius:28px;padding:clamp(22px,5vw,38px);margin:16px 0;box-shadow:0 16px 45px #bd68851c}
+.hero{text-align:center;padding:38px 22px 32px}.cake{font-size:4rem;animation:bob 2s infinite ease-in-out}@keyframes bob{50%{transform:translateY(-8px) rotate(4deg)}}
+.kicker{font-size:.75rem;letter-spacing:.2em;color:var(--pd);font-weight:bold}h1{font:clamp(2.8rem,10vw,5rem)/1 Georgia,serif;color:var(--pd);margin:15px 0 8px;text-shadow:2px 3px #ffe0ea}
+h2{font: bold clamp(1.5rem,5vw,2rem) Georgia,serif;color:var(--pd);margin:0 0 10px}.name{font-size:1.35rem;font-weight:bold;letter-spacing:.12em}
+p{line-height:1.7}.muted{color:var(--muted)}.btn{border:0;border-radius:30px;padding:12px 19px;margin:5px;background:linear-gradient(135deg,#ef91b0,#d96d98);color:white;font-weight:bold;cursor:pointer;box-shadow:0 6px 15px #d96d9833}
+.btn.alt{background:#fff0d9;color:#805e4c;box-shadow:none}.btn.light{background:white;color:var(--pd);border:1px solid var(--line);box-shadow:none}
+.btn:hover{transform:translateY(-2px)}button:focus-visible{outline:3px solid #a94470;outline-offset:3px}
+.letter{display:none;background:#fff7fa;border:1px dashed #e9abc2;border-radius:18px;padding:18px;line-height:1.85}.letter.show{display:block}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gift{background:#fff8fb;border:1px solid var(--line);border-radius:18px;padding:17px 8px;cursor:pointer;color:var(--ink);font-weight:bold}.gift span{display:block;font-size:2rem;margin-bottom:8px}.result{min-height:34px;color:var(--pd);font-weight:bold;margin-top:14px}
+.quizbox{background:#fff8fb;border-radius:18px;padding:18px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:9px}.answers button{background:white;border:1px solid var(--line);border-radius:14px;padding:12px;color:var(--ink);cursor:pointer}.answers button:hover{background:#ffeaf1}
+footer{text-align:center;color:#a48690;font-size:.85rem;padding:15px}
+.balloon{position:fixed;bottom:-100px;font-size:35px;animation:floatUp 10s linear infinite;z-index:0;pointer-events:none}@keyframes floatUp{to{transform:translateY(-120vh) rotate(18deg);opacity:0}}
+.confetti{position:fixed;top:-15px;width:8px;height:13px;z-index:5;pointer-events:none;animation:fall 3.5s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(700deg);opacity:.2}}
+@media(max-width:480px){.grid{gap:6px}.gift{font-size:.88rem;padding:13px 5px}.answers{grid-template-columns:1fr}}
+</style></head>
+<body>
+<main>
+<section class="card hero">
+<div class="cake">🎂🎀</div><div class="kicker">A LITTLE CELEBRATION FOR YOU</div>
+<h1>Happy Birthday!</h1><div class="name">ALICEDUD ♡</div>
+<p class="muted">Hari ini dunia punya alasan ekstra untuk tersenyum, karena kamu sedang merayakan hari spesialmu! ✨</p>
+<button class="btn" onclick="openLetter()">💌 Buka surat rahasia</button>
+<button class="btn alt" onclick="party()">🎉 Rayakan!</button>
+</section>
+<section class="card" id="surat"><h2>💌 Surat kecil untukmu</h2><p class="muted">Ada pesan manis yang disiapkan khusus buat ALICEDUD.</p>
+<div class="letter" id="letter"><b>Dear ALICEDUD,</b><br>happy birthday alicee, be happy ya sayang aku. jujur aku gabisa rangkai kata kata manis karna KAMU UDAH MANISS asekkk🤪🤪😘 tp jujur dut emg gabisa hehe😊😊. POKOKNYA KAMU HARUS SELALU BAHAGIAAAAA🥰😘😘😘❤️❤️ . Have the sweetest birthday! 🎂<br><b>With lots of love, ♡</b></div>
+</section>
+<section class="card"><h2>🎁 Pilih hadiah rahasiamu</h2><p class="muted">Pilih satu kotak. Kira-kira dapat apa, ya?</p>
+<div class="grid">
+<button class="gift" onclick="gift(0)"><span>🎀</span>Kotak pink</button>
+<button class="gift" onclick="gift(1)"><span>🧸</span>Kotak bear</button>
+<button class="gift" onclick="gift(2)"><span>🌷</span>Kotak bunga</button>
+</div><div class="result" id="giftResult" aria-live="polite"></div>
+</section>
+<section class="card"><h2>🧁 Mini game: tebak-tebakan!</h2><p class="muted">Jawab pertanyaan ini untuk membuka kejutan kecil.</p>
+<div class="quizbox"><b id="question">Apa yang selalu bertambah setiap kali ulang tahun?</b>
+<div class="answers" id="answers">
+<button onclick="answer(0)">Jumlah lilin</button><button onclick="answer(1)">Jumlah usia</button><button onclick="answer(2)">Jumlah hari dalam seminggu</button><button onclick="answer(3)">Jumlah bulan</button>
+</div><div class="result" id="quizResult" aria-live="polite"></div></div>
+</section>
+<section class="card" style="text-align:center"><h2>🎶 Musik kecil untukmu</h2><p class="muted">Tekan tombol untuk memutar melodi ceria buatan website ini.</p><button class="btn" id="musicBtn" onclick="toggleMusic()">▶ Putar musik</button><p class="muted" style="font-size:.8rem">Musik mulai setelah tombol ditekan karena browser membatasi autoplay.</p></section>
+<footer>Made with love for ALICEDUD · ♡</footer>
+</main>
+<script>
+function openLetter(){document.getElementById('letter').classList.toggle('show');}
+function gift(n){const m=['Kamu mendapat pita keberuntungan! Semoga semua harapan baikmu terwujud. 🎀','Satu peluk virtual super erat untukmu! Semoga kamu selalu dikelilingi orang baik. 🧸','Buket bunga virtual! Semoga hidupmu selalu bermekaran dengan kebahagiaan. 🌷'];document.getElementById('giftResult').textContent=m[n];party();}
+function answer(n){const r=document.getElementById('quizResult');if(n===1){r.textContent='Benarrr! 🎉 Semoga bertambah usia, bertambah bahagia juga!';party();}else{r.textContent='Belum tepat hehe! Coba pilih lagi 💗';}}
+function party(){for(let i=0;i<55;i++){const e=document.createElement('i');e.className='confetti';e.style.left=Math.random()*100+'vw';e.style.background=['#f28db1','#f7cf83','#c8a4e8','#9fd8c1'][i%4];e.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),4500);} }
+for(let i=0;i<7;i++){const b=document.createElement('div');b.className='balloon';b.textContent=['🎈','💗','🎈','🎀'][i%4];b.style.left=(5+i*14)+'%';b.style.animationDelay=(i*1.4)+'s';b.style.animationDuration=(9+i%3*2)+'s';document.body.appendChild(b);}
+let audioCtx=null, musicTimer=null, playing=false, noteIndex=0;
+const melody=[523.25,523.25,587.33,523.25,698.46,659.25,523.25,523.25,587.33,523.25,783.99,698.46];
+function playNote(){if(!playing)return;const now=audioCtx.currentTime;const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=melody[noteIndex%melody.length];gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.12,now+.03);gain.gain.exponentialRampToValueAtTime(.0001,now+.32);osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.34);noteIndex++;musicTimer=setTimeout(playNote,390);}
+async function toggleMusic(){const btn=document.getElementById('musicBtn');if(!playing){audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();playing=true;btn.textContent='Ⅱ Hentikan musik';playNote();}else{playing=false;clearTimeout(musicTimer);btn.textContent='▶ Putar musik';}}
+</script></body></html>
